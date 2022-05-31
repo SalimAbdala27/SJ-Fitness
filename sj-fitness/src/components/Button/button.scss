@@ -1,0 +1,19 @@
+@import "../../assets/styles/styles.scss";
+
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $tertiary;
+  border-radius: 10px;
+  height: 5vh;
+  width: 25vw;
+  background-color: $primary;
+  border: 1px solid $accent;
+}
+
+.button:hover{
+  color: $primary;
+  background-color: $accent;
+  border: 2px solid $tertiary;
+}

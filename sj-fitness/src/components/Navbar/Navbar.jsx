@@ -1,6 +1,6 @@
 import React from 'react';
 import "./navbar.scss"
-
+// add icons to perfect it 
 const Navbar = () => {
   return (
     <div className='navbar'>
