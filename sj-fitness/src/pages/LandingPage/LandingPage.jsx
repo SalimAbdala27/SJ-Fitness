@@ -15,7 +15,7 @@ const LandingPage = () => {
       <Button label={"Join Us"}/>
       <div className="landingPage__back">
       <ParticlesBg type="cobweb" bg={true} color={
-        "white"} />
+        "#222831"} />
       </div>
     </div>
   )
