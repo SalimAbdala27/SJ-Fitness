@@ -3,7 +3,11 @@ import "./navbar.scss"
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineUser } from "react-icons/ai";
 // add icons to perfect it 
-const Navbar = () => {
+const Navbar = (props) => {
+  const {open, setOpen} = props;
+  const openMenu = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
   return (
     <div className='navbar'>
       <div className="navbar__left">
@@ -11,7 +15,7 @@ const Navbar = () => {
       </div>
       <div className="navbar__right">
         <AiOutlineUser/>
-        <GiHamburgerMenu/>
+        <GiHamburgerMenu onClick={openMenu}/>
       </div>
     </div>
   )
