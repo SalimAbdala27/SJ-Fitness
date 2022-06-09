@@ -1,0 +1,63 @@
+@import "../../assets/styles/styles.scss";
+
+.splitBar {
+    &__main {
+        display: flex;
+        // justify-content: space-evenly;
+        // align-items: center;
+        border: 2px solid $accent;
+        background-color: $secondary;
+        width: 75%;
+    }
+
+    &__heading {
+        &-holder {
+            // border: 1px solid yellow;
+            width: 100%;
+        }
+
+        &-title {
+            // border: 1px solid yellow;
+            color: $tertiary;
+            text-align: center;
+            width: 100%;
+        }
+
+        &-icon {
+            // border: 1px solid yellow;
+            display: flex;
+            justify-content: right;
+            width: 100%;
+        }
+    }
+
+    &__subs {
+        border: 2px solid $accent;
+        background-color: $secondary;
+        width: 75%;
+
+            &-exercise {
+                border: 1px solid $accent;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                text-align: center;
+
+                &-holder {
+                    width: 100%;
+                }
+
+                &-name {
+                    color: $tertiary;
+                    text-align: center;
+                    width: 100%;
+                }
+
+                &-icon {
+                    display: flex;
+                    justify-content: right;
+                    width: 100%;
+                }
+            }
+    }
+}
