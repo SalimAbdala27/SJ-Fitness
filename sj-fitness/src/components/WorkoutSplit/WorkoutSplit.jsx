@@ -6,12 +6,24 @@ import { CgMoreO } from "react-icons/cg";
 
 
 const WorkoutSplit = (props) => {
-    const { splitTitle, openSplitDown } = props;
+    const { splitTitle, openSplitDown, splitExercises } = props;
 
     const mode = (openSplitDown ? <AiOutlineClose /> :<AiOutlinePlus /> )
     const [openSplit, setOpenSplit] = useState(false);
     const handleChange = () => {
         setOpenSplit((prevOpenDrop) => !prevOpenDrop)
+    }
+
+    const getExercises = () => {
+        return (
+            splitExercises.map((exercise) =>
+                <div className="splitBar__subs-exercise">
+                    <div className="splitBar__subs-exercise-holder"></div>
+                    <div className="splitBar__subs-exercise-name">{exercise}</div>
+                    <div className="splitBar__subs-exercise-icon"><CgMoreO /></div>
+                </div>
+            )
+        )
     }
 
   return (
@@ -25,7 +37,15 @@ const WorkoutSplit = (props) => {
             </div>
             {openSplit && (
                 <div className="splitBar__subs">
-                    <div className="splitBar__subs-exercise">
+                    {getExercises()}
+                </div>
+            )}
+        </div>
+    )
+}
+export default WorkoutSplit
+
+{/* <div className="splitBar__subs-exercise">
                         <div className="splitBar__subs-exercise-holder"></div>
                         <div className="splitBar__subs-exercise-name">Pull ups</div>
                         <div className="splitBar__subs-exercise-icon"><CgMoreO /></div>
@@ -44,10 +64,4 @@ const WorkoutSplit = (props) => {
                         <div className="splitBar__subs-exercise-holder"></div>
                         <div className="splitBar__subs-exercise-name">Rear delt fly</div>
                         <div className="splitBar__subs-exercise-icon"><CgMoreO /></div>
-                    </div>
-                </div>
-            )}
-        </div>
-    )
-}
-export default WorkoutSplit
+                    </div> */}
