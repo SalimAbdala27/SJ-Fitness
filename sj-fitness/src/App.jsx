@@ -4,7 +4,6 @@ import { auth } from "./firebase-config"
 import './App.scss';
 
 // forgot password is done Needs a loading thing and a modal to say check spam and wrong pass response etc... and adding a name to it too in the object done!!
-// above is all done because jerome is slacking smh :D
 
 function App() {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -12,6 +11,7 @@ function App() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [userName, setUserName] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [resetPassword, setResetPassword] = useState(false);
 
   const [user, setUser] = useState({});
@@ -42,6 +42,11 @@ function App() {
       console.log(user);
     } catch (error) {
       console.log(error.message);
+      if (error.message === "Firebase: Error (auth/wrong-password).") {
+        setErrorMessage("Wrong Password")
+      } else if ( error.message === "Firebase: Error (auth/user-not-found)."){
+        setErrorMessage("User Not Found")
+      }
     }
   }
 
@@ -71,6 +76,7 @@ function App() {
         <input placeholder='email' onChange={(event) => setLoginEmail(event.target.value)}/>
         <input placeholder='password' onChange={(event) => setLoginPassword(event.target.value)}/>
       </div>
+      <p>{errorMessage}</p>
       <button onClick={login}>Login</button>
       <button onClick={resetPass}>Reset Pass</button>
       {resetPassword && (
