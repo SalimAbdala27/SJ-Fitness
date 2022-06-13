@@ -1,0 +1,23 @@
+@import "../../assets/styles/styles.scss";
+
+.landingPage{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 101vw;
+  height: 100vh;
+  // adjust css if nesscary
+  background-color: $secondary;
+  color: $tertiary;
+  flex-direction: column;
+  &__header{
+    font-weight: 300;
+    font-size: 44px;
+    margin-bottom: 20px;
+    margin-top: 9vh;
+    z-index: 1;
+  }
+  &__back{
+    z-index: 0 !important;
+  }
+}

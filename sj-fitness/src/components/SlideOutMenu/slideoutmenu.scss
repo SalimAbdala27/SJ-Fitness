@@ -1,0 +1,31 @@
+@import "../../assets/styles/styles.scss";
+
+.slideoutmenu{
+  z-index: 99;
+  background-color: $primary;
+  margin-top: -25px;
+  &__links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 95vh;
+    width: 101vw;
+    color: $tertiary;
+    gap: 15px;
+    font-size: 20px;
+    &-link{
+      margin-top: 20px;
+      font-weight: 400;
+    }
+    &-link:hover{
+      color: $accent;
+    }
+    &-lines{
+      width: 24vw;
+      background-color: #00ADB5 !important;
+      border: none;
+      height: 1px;
+    }
+  }
+}
