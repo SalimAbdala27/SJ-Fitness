@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import { auth } from "./firebase-config"
 import './App.scss';
 
-// forgot password is done Needs a loading thing and a modal to say check spam etc... and adding a name to it too in the object done!!
+// forgot password is done Needs a loading thing and a modal to say check spam and wrong pass response etc... and adding a name to it too in the object done!!
 // above is all done because jerome is slacking smh :D
 
 function App() {
