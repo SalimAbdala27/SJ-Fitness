@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import './App.scss';
 import Featurebar from './components/Featurebar/Featurebar';
 import Navbar from './components/Navbar/Navbar';
