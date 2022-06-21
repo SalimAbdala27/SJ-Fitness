@@ -1,10 +1,14 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, updateProfile} from "../node_modules/firebase/auth"
-import { auth } from "./firebase-config"
-import './App.scss';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, updateProfile} from "firebase/auth"
+import { auth } from "../../firebase-config"
+import "./login.scss"
+import {
+  Link,
+} from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
+  const {user, setUser} = props
 // forgot password is done Needs a loading thing and a modal to say check spam and wrong pass response etc... and adding a name to it too in the object done!!
 const [registerEmail, setRegisterEmail] = useState("");
 const [registerPassword, setRegisterPassword] = useState("");
@@ -14,7 +18,7 @@ const [userName, setUserName] = useState("");
 const [errorMessage, setErrorMessage] = useState("");
 const [resetPassword, setResetPassword] = useState(false);
 
-const [user, setUser] = useState({});
+// const [user, setUser] = useState({});
 
 useEffect(() => {
   onAuthStateChanged(auth, (currentUser) => {
@@ -63,7 +67,7 @@ const register = async () => {
     }
   }
   return (
-    <div className="App">
+    <div className="login">
       <div>
         <h3>Register User</h3>
         <input placeholder='name' onChange={(event) => setUserName(event.target.value)}/>
@@ -86,6 +90,7 @@ const register = async () => {
       <p>{user?.displayName}</p>
       <p>{user?.email}</p>
       <button onClick={logout}>Sign Out</button>
+      <Link to={"/test"}><button>go to test</button></Link>
   </div>
   );
 }
