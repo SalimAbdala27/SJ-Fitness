@@ -29,7 +29,7 @@ function App() {
             {open && <SlideOutMenu/> }
             </div>
             <Routes>
-                <Route path="/" element={<LandingPage/>}/>
+                <Route path="/" element={<LandingPage user={user} setUser={setUser}/>}/>
                 <Route path="/register" element={<Register user={user} setUser={setUser}/>}/>
                 <Route path="/test" element={<Test user={user} setUser={setUser}/>}/>
                 <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
