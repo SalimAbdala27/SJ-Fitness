@@ -21,18 +21,18 @@ function App() {
   const [open, setOpen] = useState(false);
   return (
     <BrowserRouter>
-    <div className="App">
-      <div className="App__top">
-      <Navbar open={open} setOpen={setOpen} user={user}/>
-      <Featurebar/>
-      {open && <SlideOutMenu/> }
-      </div>
-      <Routes>
-      <Route path="/test" element={<Test user={user} setUser={setUser}/>}/>
-        <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
-        <Route path="/" element={<LandingPage/>}/>
-      </Routes>
-    </div>
+        <div className="App">
+            <div className="App__top">
+            {/* <Navbar open={open} setOpen={setOpen} user={user}/> */}
+            <Featurebar/>
+            {open && <SlideOutMenu/> }
+            </div>
+            <Routes>
+                <Route path="/" element={<LandingPage/>}/>
+                <Route path="/test" element={<Test user={user} setUser={setUser}/>}/>
+                <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
+            </Routes>
+        </div>
     </BrowserRouter>
   );
 }
