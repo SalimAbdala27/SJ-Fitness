@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, updateProfile} from "firebase/auth"
 import { auth } from "../../firebase-config"
 import "./register.scss"
+import Button from '../../components/Button/Button'
 import {
   Link,
 } from "react-router-dom";
+
 
 const Register = (props) => {
   const {user, setUser} = props
@@ -44,7 +46,7 @@ const register = async () => {
         <input placeholder='password' onChange={(event) => setRegisterPassword(event.target.value)}/>
       </div>
       <button onClick={register}>Create user</button>
-      <Link to={"/login"}><button>Login</button></Link>
+      <Link to={"/login"}><Button label={"Login"}/></Link>
   </div>
   );
 }
