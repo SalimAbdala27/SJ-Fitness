@@ -10,8 +10,6 @@ import {
 const Login = (props) => {
   const {user, setUser} = props
 // forgot password is done Needs a loading thing and a modal to say check spam and wrong pass response etc... and adding a name to it too in the object done!!
-const [registerEmail, setRegisterEmail] = useState("");
-const [registerPassword, setRegisterPassword] = useState("");
 const [loginEmail, setLoginEmail] = useState("");
 const [loginPassword, setLoginPassword] = useState("");
 const [userName, setUserName] = useState("");
@@ -27,19 +25,6 @@ useEffect(() => {
   
 }, [])
 
-const register = async () => {
-  try {
-    const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
-      await updateProfile(user.user, {
-        displayName: userName
-      });
-      console.log(user);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-  
-  
   const login = async () => {
     try {
       const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
@@ -69,13 +54,6 @@ const register = async () => {
   return (
     <div className="login">
       <div>
-        <h3>Register User</h3>
-        <input placeholder='name' onChange={(event) => setUserName(event.target.value)}/>
-        <input placeholder='email' onChange={(event) => setRegisterEmail(event.target.value)}/>
-        <input placeholder='password' onChange={(event) => setRegisterPassword(event.target.value)}/>
-      </div>
-      <button onClick={register}>Create user</button>
-      <div>
       <h3>Login User</h3>
         <input placeholder='email' onChange={(event) => setLoginEmail(event.target.value)}/>
         <input placeholder='password' onChange={(event) => setLoginPassword(event.target.value)}/>
@@ -91,6 +69,7 @@ const register = async () => {
       <p>{user?.email}</p>
       <button onClick={logout}>Sign Out</button>
       <Link to={"/test"}><button>go to test</button></Link>
+      <Link to={"/register"}><button>Create and account</button></Link>
   </div>
   );
 }
