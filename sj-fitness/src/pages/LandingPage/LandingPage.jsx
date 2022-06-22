@@ -13,7 +13,7 @@ const LandingPage = ({user, setUser}) => {
       <h1 className="landingPage__header">
         SJ
       </h1>
-      <Link to={"/register"}><Button label={"Join Us"}/></Link>
+      <Link to={"/register"} className="landingPage__btn"><Button label={"Join Us"} className="landingPage__btn"/></Link>
       <div className="landingPage__back">
       <ParticlesBg type="cobweb" bg={true} color={
         "#222831"} />

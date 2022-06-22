@@ -12,13 +12,12 @@ const Navbar = (props) => {
   return (
     <div className='navbar'>
       <div className="navbar__left">
-        <Link to={"/"}>SJ</Link>
+        <Link to={"/"} className="navbar__home">SJ</Link>
       </div>
       <div className="navbar__right">
         {user ?
             (<div className='usericon'>
-                {/* <p className='usericon__letter'>{(user?.user?.displayName).charAt(0)}</p> */}
-                {user.displayName}
+                <p className='usericon__letter'>{(user.displayName).charAt(0)}</p>
             </div>)
             : <AiOutlineUser />
         }
