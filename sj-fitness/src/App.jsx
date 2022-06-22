@@ -12,7 +12,7 @@ function App() {
       <div className="App__top">
       {/* <Navbar/> */}
       </div>
-      <WorkoutSplit splitTitle="Push" openSplitDown={false} splitExercises={["Barbell rows", "Lat Pull down", "Pull ups", "Rear delt fly"]}/>
+      <WorkoutSplit splitTitle="Pull" openSplitDown={false} splitExercises={["Barbell rows", "Lat Pull down", "Pull ups", "Rear delt fly"]}/>
     </div>
   );
 }
