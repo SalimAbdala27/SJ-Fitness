@@ -1,8 +1,82 @@
+@import "../../assets/styles/styles.scss";
+
 .register{
   display: flex;
-  align-items: center;
-  justify-content: center;
   height: 89vh;
   width: 100vw;
   flex-direction: column;
+  background-color: $secondary;
+  &__login{
+    text-decoration: none;
+    font-size: 18px;
+    padding-top: 50px;
+    cursor: pointer;
+    &-span{
+      text-decoration: underline;
+    }
+    &-span:hover{
+      color: $accent;
+    }
+  }
+  &__login:visited{
+    text-decoration: none;
+    color: $tertiary;
+  }
+  &__container{
+    color: $tertiary;
+    &-btn{
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      margin-top: 50px;
+      color: $tertiary;
+      border-radius: 10px;
+      height: 6vh;
+      width: 35vw;
+      background-color: $primary;
+      border: 1px solid $accent;
+      font-size: 22px;
+    }
+    &-btn:hover{
+      color: $primary;
+      background-color: $accent;
+      border: 2px solid $tertiary;
+    }
+    &-header{
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      font-weight: 300;
+      font-size: 30px;
+      padding-left: 10px;
+      padding-top: 20px;
+    }
+    &-form{
+      gap: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 65vh;
+      width: 100vw;
+      &-input{
+        width: 85vw;
+        height: 4vh;
+        border: 1px solid $accent;
+        border-radius: 10px;
+        background-color: $primary;
+      }
+      &-input:focus{
+        border: 1px solid $primary;
+      }
+      &-labels{
+        display: flex;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        width: 85vw;
+        font-size: 20px;
+      }
+    }
+  }
 }
