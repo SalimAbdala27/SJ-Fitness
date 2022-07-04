@@ -1,9 +1,89 @@
+@import "../../assets/styles/styles.scss";
 
-.login{
-  display: flex;
-  align-items: center;
+.login {
+//   display: flex;
+//   align-items: center;
   justify-content: center;
   height: 89vh;
   width: 100vw;
   flex-direction: column;
+  background-color: #393E46;
+
+  &__container {
+    margin: 30px 0px 0px 25px;
+  }
+
+  &__inputField {
+    margin-bottom: 30px;
+
+        &-password {
+            margin-bottom: 10px;
+        }
+  }
+
+  &__heading {
+    color: $tertiary;  
+    font-size: 22px;
+    margin-bottom: 45px;
+  }
+
+  &__title {
+    color: $tertiary;
+    margin-bottom: 8px;  
+  }
+
+  &__inputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #00ADB5;
+    background-color: #222831;
+    border-radius: 5px;
+    width: 320px;
+    height: 40px;
+    padding: 0px 6px 0px 7px;
+
+        &-input {
+            border: none;
+            color: #EEEEEE;
+            border-radius: 5px;
+            background-color: #222831;
+            width: 270px;
+            font-size: 20px;
+        }
+
+        &-icons {
+            color: $tertiary;
+            height: 20px;
+            // width: 20px;
+            margin-left: 6px;
+        }
+
+        &-icon {
+            color: $tertiary;
+            height: 20px;
+            width: 20px;
+        }
+  }
+
+  &__forgotPassword {
+    color: $tertiary;
+    text-decoration: underline;
+    text-align: left;
+    margin-bottom: 80px;
+  }
+
+  &__buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__login-Button {
+    margin-right: 30px;
+  }
+
+  &__signUp-Button {
+    text-decoration: none;
+  }
 }

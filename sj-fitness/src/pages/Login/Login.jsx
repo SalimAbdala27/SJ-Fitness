@@ -6,6 +6,11 @@ import "./login.scss"
 import {
   Link,
 } from "react-router-dom";
+import { MdOutlineMail } from "react-icons/md";
+import { FiLock } from "react-icons/fi";
+import Button from '../../components/Button/Button'
+
+
 
 const Login = (props) => {
   const {user, setUser} = props
@@ -53,23 +58,48 @@ useEffect(() => {
   }
   return (
     <div className="login">
-      <div>
-      <h3>Login User</h3>
-        <input placeholder='email' onChange={(event) => setLoginEmail(event.target.value)}/>
-        <input placeholder='password' onChange={(event) => setLoginPassword(event.target.value)}/>
-      </div>
+      <div className="login__container">
+        <p className="login__heading">Login User</p>
+        <div className="login__inputField">
+            <p className="login__title">Email</p>
+            <div className="login__inputContainer">
+                <input onChange={(event) => setLoginEmail(event.target.value)} className="login__inputContainer-input"/>
+                <div className="login__inputContainer-icons">
+                    <MdOutlineMail className="login__inputContainer-icon" />
+                </div>
+            </div>
+        </div>
+        <div className="login__inputField-password">
+            <p className="login__title">Password</p>
+            <div className="login__inputContainer">
+                <input onChange={(event) => setLoginPassword(event.target.value)} className="login__inputContainer-input"/>
+                <div className="login__inputContainer-icons">
+                    <FiLock className="login__inputContainer-icon" />
+                </div>
+            </div>
+        </div>
+        <p className="login__forgotPassword" onClick={resetPass}>Forgotten Password?</p>
+
       <p>{errorMessage}</p>
-      <button onClick={login}>Login</button>
-      <button onClick={resetPass}>Reset Pass</button>
+      <div className="login__buttonContainer">
+        <div className="login__login-Button" onClick={login}>
+            <Button label={"Login"}/>
+        </div>
+        <Link to={"/register"} className="login__signUp-Button">
+            <Button label={"Sign Up"}/>
+        </Link>
+      </div>
+      {/* <button onClick={login}>Login</button> */}
+      {/* <button onClick={resetPass}>Reset Pass</button> */}
+      </div>
       {resetPassword && (
         <p>Check Spam folder</p>
         )}
-      <h4>User Logged In:</h4>
-      <p>{user?.displayName}</p>
-      <p>{user?.email}</p>
-      <button onClick={logout}>Sign Out</button>
-      <Link to={"/test"}><button>go to test</button></Link>
-      <Link to={"/register"}><button>Create and account</button></Link>
+      {/* <h4>User Logged In:</h4>
+      <button onClick={logout}>Sign Out</button> */}
+      {/* <Link to={"/register"}><button>Create and account</button></Link> */}
+      {/* <p>{user?.displayName}</p>
+      <p>{user?.email}</p> */}
   </div>
   );
 }
