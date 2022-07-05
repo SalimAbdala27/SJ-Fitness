@@ -29,3 +29,5 @@ const Navbar = (props) => {
 }
 
 export default Navbar
+
+// make the User Login initial appear properly
