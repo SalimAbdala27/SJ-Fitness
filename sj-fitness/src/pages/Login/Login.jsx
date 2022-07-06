@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { MdOutlineMail } from "react-icons/md";
 import { FiLock } from "react-icons/fi";
 import Button from "../../components/Button/Button";
+import SuccessModal from "../../components/SuccessModal/SuccessModal";
 
 const Login = (props) => {
     const { user, setUser } = props;
@@ -22,7 +23,7 @@ const Login = (props) => {
     const [loginPassword, setLoginPassword] = useState("");
     const [userName, setUserName] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const [resetPassword, setResetPassword] = useState(false);
+    const [resetPassword, setResetPassword] = useState(true);
 
     // const [user, setUser] = useState({});
 
@@ -32,7 +33,6 @@ const Login = (props) => {
         });
     }, []);
 
-    // made errors appear on screen
     const login = async () => {
         try {
             const user = await signInWithEmailAndPassword(
@@ -66,6 +66,12 @@ const Login = (props) => {
             console.log(error.message);
         }
     };
+
+    const closeRepsonseModal = () => {
+        setResetPassword(false);
+    };
+
+
     return (
         <div className="login">
             <div className="login__container">
@@ -117,7 +123,11 @@ const Login = (props) => {
                 </div>
                 {/* <button onClick={logout}>Sign Out</button> */}
             </div>
-            {resetPassword && <p>Check Spam folder</p>}
+            {resetPassword && 
+                <div className="login__resetPassword">
+                    <SuccessModal closeResponseModal={closeRepsonseModal} />
+                </div>
+            }
         </div>
     );
 };
