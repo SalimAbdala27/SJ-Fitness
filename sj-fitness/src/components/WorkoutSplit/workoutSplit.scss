@@ -1,0 +1,55 @@
+@import "../../assets/styles/styles.scss";
+
+
+.pageHold {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown {
+    border: 1px solid $accent;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    &__heading {
+        &-container {
+            color: $tertiary;
+            width: 80vw;
+            background-color: $secondary;
+            padding: 2px;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+        }
+
+        &-title {
+            font-size: 18px;
+        }
+
+        &-icon {
+            text-align: right;
+            display: flex;
+        }
+    }
+
+    &__options {
+        width: 80vw;
+        font-size: 16px;
+        background-color: $primary;
+        color: $tertiary;
+
+        &-exercise {
+            border-top: 1px solid $accent;
+            padding: 4px;
+
+            &-icon {
+                text-align: center;
+            }
+        }
+    }
+
+
+}
