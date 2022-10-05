@@ -1,12 +1,14 @@
 import React from "react";
 import "./successModal.scss";
+import { AiOutlineCheck } from "react-icons/ai";
+
 
 const SuccessModal = ({ closeResponseModal }) => {
     return (
         <div className="successModalContainer">
             <div className="successModal">
                 <div className="success success-animation icon-top">
-                    <i className="fa fa-check"></i>
+                    <AiOutlineCheck />                
                 </div>
                 <div className="success border-bottom"></div>
                 <div className="successModal-content">
