@@ -43,11 +43,20 @@ const register = async () => {
         <h3 className='register__container-header'>Sign Up</h3>
         <div className="register__container-form">
           <p className="register__container-form-labels">Name</p>
-        <input className="register__container-form-input"onChange={(event) => setUserName(event.target.value)} required/>
+        {/* <input className="register__container-form-input" onChange={(event) => setUserName(event.target.value)} required/> */}
+        <div className="register__container-form-inputContainer">
+            <input className="register__container-form-inputContainer-input" onChange={(event) => setUserName(event.target.value)} required/>
+        </div>
         <p className="register__container-form-labels">Email</p>
-        <input className="register__container-form-input" onChange={(event) => setRegisterEmail(event.target.value)} required/>
+        {/* <input className="register__container-form-input" onChange={(event) => setRegisterEmail(event.target.value)} required/> */}
+        <div className="register__container-form-inputContainer">
+            <input className="register__container-form-inputContainer-input" onChange={(event) => setRegisterEmail(event.target.value)} required/>
+        </div>
         <p className="register__container-form-labels">Password</p>
-        <input className="register__container-form-input" onChange={(event) => setRegisterPassword(event.target.value)} required/>
+        {/* <input className="register__container-form-input" onChange={(event) => setRegisterPassword(event.target.value)} required/> */}
+        <div className="register__container-form-inputContainer">
+            <input className="register__container-form-inputContainer-input" onChange={(event) => setRegisterPassword(event.target.value)} required/>
+        </div>
       <Link className='register__login' to={"/login"}><p className='register__login-p' >Already a user? <span className='register__login-span' >LOGIN</span></p></Link>
       <button className='register__container-btn' onClick={register}>Sign Up</button>
         </div>
