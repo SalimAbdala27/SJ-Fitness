@@ -17,7 +17,7 @@ const Navbar = (props) => {
       <div className="navbar__right">
         {user ?
             (<div className='usericon'>
-                <p className='usericon__letter'>{(user.displayName).charAt(0)}</p>
+                {/* <p className='usericon__letter'>{(user.displayName).charAt(0)}</p> */}
             </div>)
             : <AiOutlineUser />
         }

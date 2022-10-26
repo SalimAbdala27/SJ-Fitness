@@ -23,12 +23,13 @@ function App() {
   const [open, setOpen] = useState(false);
   return (
     <WorkoutSplit splitName={"Pull"} workouts={["Pull up", "Bicep curl"]}/>
+
     // <BrowserRouter>
     //     <div className="App">
     //         <div className="App__top">
-    //         <Navbar open={open} setOpen={setOpen} user={user} setUser={setUser} />
-    //         <Featurebar/>
-    //         {open && <SlideOutMenu/> }
+    //             <Navbar open={open} setOpen={setOpen} user={user} setUser={setUser} />
+    //             <Featurebar/>
+    //             {open && <SlideOutMenu/> }
     //         </div>
     //         <Routes>
     //             <Route path="/" element={<LandingPage user={user} setUser={setUser}/>}/>

@@ -1,36 +1,44 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./workoutSplit.scss";
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp, MdPending, MdDoneOutline } from "react-icons/md";
 
 const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
+
+    const [openDrop, setOpenDrop] = useState(false);
+    const [listOfWorkouts, setListOfWorkouts] = useState([]);
+
     const mode = opendropdown ? (
         <MdOutlineArrowDropUp />
     ) : (
         <MdOutlineArrowDropDown />
     );
 
-    const [openDrop, setOpenDrop] = useState(false);
-
     const handleChange = () => {
         setOpenDrop((prevOpenDrop) => !prevOpenDrop);
     };
 
-    const listOfWorkOuts = [];
-
-    workouts.map(exercise => {
-        listOfWorkOuts.push(
-            <p className="dropdown__options-exercise">{exercise} <MdPending className="dropdown__options-exercise-icon"/></p>
-        )
-    })
+    const initialiseWorkouts = () => {
+        const workoutData = [];
+        workouts.map(exercise => {
+            workoutData.push(
+                <p className="dropdown__options-exercise">{exercise} <MdPending className="dropdown__options-exercise-icon"/></p>
+            )
+        })
+        setListOfWorkouts(workoutData)
+    }
 
     const inputRef = useRef(null);
 
-    const createExercise = () => {
-        console.log(inputRef.current.value);
-        listOfWorkOuts.push(
-            <p className="dropdown__options-exercise">{inputRef.current.value} <MdPending className="dropdown__options-exercise-icon"/></p>
-        )
+    const createExercise = (e) => {
+        e.preventDefault();
+        let updatedList = [...listOfWorkouts];
+        updatedList.push(<p className="dropdown__options-exercise">{inputRef.current.value} <MdPending className="dropdown__options-exercise-icon"/></p>);
+        setListOfWorkouts(updatedList)
     }
+
+    useEffect(() => {
+        initialiseWorkouts();
+    }, [])
 
     return (
         <div className="pageHold">
@@ -46,11 +54,11 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
                 <div className="dropdown__options">
                     {openDrop && (
                         <div className="dropdown__options-list">
-                            {listOfWorkOuts}
-                            {/* <form onSubmit={createExercise}>
+                            {listOfWorkouts}
+                            <form onSubmit={createExercise}>
                                 <input className="dropdown__options-exercise-icon" placeholder="Add new exercise" ref={inputRef} />
                                 <button type="submit"> <MdDoneOutline /> </button>
-                            </form> */}
+                            </form>
                         </div>
                     )}
                 </div>
@@ -60,3 +68,6 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
 };
 
 export default WorkoutSplit;
+
+
+{/* <WorkoutSplit splitName={"Pull"} workouts={["Pull up", "Bicep curl"]}/> */}
