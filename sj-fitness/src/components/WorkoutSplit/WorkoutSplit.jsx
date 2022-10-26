@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./workoutSplit.scss";
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp, MdPending, MdDoneOutline } from "react-icons/md";
+import { BsPlus, BsPlusLg } from "react-icons/bs";
 
 const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
 
     const [openDrop, setOpenDrop] = useState(false);
+    const [openAdd, setOpenAdd] = useState(false);
     const [listOfWorkouts, setListOfWorkouts] = useState([]);
 
     const mode = opendropdown ? (
@@ -13,8 +15,12 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
         <MdOutlineArrowDropDown />
     );
 
-    const handleChange = () => {
+    const handleSplitDrop = () => {
         setOpenDrop((prevOpenDrop) => !prevOpenDrop);
+    };
+
+    const handleAddDrop = () => {
+        setOpenAdd((prevOpenDrop) => !prevOpenDrop);
     };
 
     const initialiseWorkouts = () => {
@@ -43,22 +49,27 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
     return (
         <div className="pageHold">
             <div className="dropdown">
-                <div className="dropdown__heading-container" onClick={handleChange}>
-                    <div className="dropdown__heading-title">
-                        {splitName}
+                <div className="dropdown__heading-container">
+                    <div className="dropdown__heading-container-left" onClick={handleSplitDrop}>
+                        <div className="dropdown__heading-title">
+                            {splitName}
+                        </div>
+                        <div className="dropdown__heading-icon">
+                            {mode}
+                        </div>
                     </div>
-                    <div className="dropdown__heading-icon">
-                        {mode}
-                    </div>
+                    <div className="dropdown__heading-container-right" onClick={handleAddDrop}><BsPlusLg /></div>
                 </div>
                 <div className="dropdown__options">
                     {openDrop && (
                         <div className="dropdown__options-list">
                             {listOfWorkouts}
-                            <form onSubmit={createExercise}>
-                                <input className="dropdown__options-exercise-icon" placeholder="Add new exercise" ref={inputRef} />
-                                <button type="submit"> <MdDoneOutline /> </button>
-                            </form>
+                            {openAdd && (
+                                <form onSubmit={createExercise}>
+                                    <input className="dropdown__options-exercise-icon" placeholder="Add new exercise" ref={inputRef} />
+                                    <button type="submit"> <MdDoneOutline /> </button>
+                                </form>
+                            )}
                         </div>
                     )}
                 </div>
