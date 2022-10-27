@@ -58,7 +58,11 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
                             {mode}
                         </div>
                     </div>
-                    <div className="dropdown__heading-container-right" onClick={handleAddDrop}><BsPlusLg /></div>
+                    { openDrop && (
+                        <div className="dropdown__heading-container-right" onClick={handleAddDrop}>
+                            <BsPlusLg />
+                        </div>
+                    )}
                 </div>
                 <div className="dropdown__options">
                     {openDrop && (
