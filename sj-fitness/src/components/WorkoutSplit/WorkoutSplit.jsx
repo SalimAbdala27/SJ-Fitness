@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./workoutSplit.scss";
 import { MdOutlineArrowDropDown, MdOutlineArrowDropUp, MdPending, MdDoneOutline } from "react-icons/md";
 import { BsPlus, BsPlusLg } from "react-icons/bs";
+import { logDOM } from "@testing-library/react";
 
 const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
 
@@ -34,7 +35,7 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
     const initialiseWorkouts = () => {
         const workoutData = [];
         console.log("Inital workouts ", arrayOfWorkouts);
-        arrayOfWorkouts.map(exercise => {
+        arrayOfWorkouts.map((exercise, index) => {
             workoutData.push(
                 <>
                     <p className="dropdown__options-exercise" >
@@ -45,7 +46,7 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
                         <div className="options-popup">
                             <li className="options-popup__item">View</li>
                             <li className="options-popup__item">Edit</li>
-                            <li className="options-popup__item">Delete</li>
+                            <li className="options-popup__item" onClick={handleDelete} value={index}>Delete</li>
                         </div>
                     {/* )} */}
                 </>
@@ -72,7 +73,7 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
                     <div className="options-popup">
                         <li className="options-popup__item">View</li>
                         <li className="options-popup__item">Edit</li>
-                        <li className="options-popup__item">Delete</li>
+                        <li className="options-popup__item" onClick={handleDelete}>Delete</li>
                     </div>
                 {/* )} */}
             </>
@@ -80,6 +81,14 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
         setListOfWorkouts(updatedList)
         setArrayOfWorkouts(updatedArrayWorkouts)
         console.log("After array ", arrayOfWorkouts);
+    }
+
+    const handleDelete = (e) => {
+        const deleteValue = arrayOfWorkouts[e.target.value]
+        console.log("Deleted value: ", deleteValue);
+        const deletedArr = arrayOfWorkouts.filter(workout => workout !== deleteValue)
+        console.log("The deleted array ", deletedArr);
+        setArrayOfWorkouts(deletedArr);
     }
 
     useEffect(() => {
