@@ -66,8 +66,42 @@
 .options-popup {
     text-decoration: none;
     list-style: none;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 40px;
+    padding: 10px;
 
     &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
+        &-name {
+            font-size: 15px;
+        }
+
+        &-icon {
+
+        }
     }
 }
+
+.dropdown__options-exercise {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dropdown__options-exercise-name {
+    text-align: center; /* Center the text horizontally */
+    flex: 1; /* Allow text to grow and take available space */
+  }
+  
+  .dropdown__options-exercise-icon {
+    margin-left: -14px;
+    margin-right: 7px;
+  }
+  
+  

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./workoutSplit.scss";
-import { MdOutlineArrowDropDown, MdOutlineArrowDropUp, MdPending, MdDoneOutline } from "react-icons/md";
-import { BsPlus, BsPlusLg } from "react-icons/bs";
+import { MdOutlineArrowDropDown, MdOutlineArrowDropUp, MdPending, MdDoneOutline, MdModeEdit } from "react-icons/md";
+import { BsPlus, BsPlusLg, BsFillEyeFill, BsFillTrashFill  } from "react-icons/bs";
 import { logDOM } from "@testing-library/react";
 
 
@@ -11,7 +11,7 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
     const [openAdd, setOpenAdd] = useState(false);
     const [arrayOfWorkouts, setArrayOfWorkouts] = useState([...workouts]);
     const [listOfWorkouts, setListOfWorkouts] = useState([]);
-    const [optionsPopup, setOptionsPopup] = useState(false)
+    const [optionsPopup, setOptionsPopup] = useState(true)
 
 
     const mode = opendropdown ? (
@@ -40,15 +40,31 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
         arrayOfWorkouts.map((exercise, index) => {
             workoutData.push(
                 <div key={index}>
-                    <p className="dropdown__options-exercise" >
+                    {/* <p className="dropdown__options-exercise" >
                         {exercise} 
                         <MdPending className="dropdown__options-exercise-icon" onClick={handleOptionsPopup} />
-                    </p>
+                    </p> */}
+                    <div className="dropdown__options-exercise" >
+                        <p className="dropdown__options-exercise-name">{exercise}</p>
+                        <MdPending className="dropdown__options-exercise-icon" onClick={handleOptionsPopup} />
+                    </div>
                     {optionsPopup && (
                         <div className="options-popup">
-                            <li className="options-popup__item">View</li>
+                            <li className="options-popup__item">
+                                <BsFillEyeFill className="options-popup__item-icon" />
+                                <p className="options-popup__item-name">View</p>
+                            </li>
+                            <li className="options-popup__item">
+                                <MdModeEdit className="options-popup__item-icon" />
+                                <p className="options-popup__item-name">Edit</p>
+                            </li>
+                            <li className="options-popup__item" onClick={handleDelete} value={index}>
+                                <BsFillTrashFill className="options-popup__item-icon" /> 
+                                <p className="options-popup__item-name">Delete</p> 
+                            </li>
+                            {/* <li className="options-popup__item">View</li>
                             <li className="options-popup__item">Edit</li>
-                            <li className="options-popup__item" onClick={handleDelete} value={index}>Delete</li>
+                            <li className="options-popup__item" onClick={handleDelete} value={index}>Delete</li> */}
                         </div>
                     )}
                 </div>
