@@ -12,7 +12,6 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import Register from './pages/Register/Register';
 import WorkoutSplit from './components/WorkoutSplit/WorkoutSplit';
 
 // something to show how to add to homescreen 

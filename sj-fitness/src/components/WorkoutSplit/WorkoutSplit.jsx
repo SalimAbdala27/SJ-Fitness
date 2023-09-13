@@ -40,10 +40,6 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
         arrayOfWorkouts.map((exercise, index) => {
             workoutData.push(
                 <div key={index}>
-                    {/* <p className="dropdown__options-exercise" >
-                        {exercise} 
-                        <MdPending className="dropdown__options-exercise-icon" onClick={handleOptionsPopup} />
-                    </p> */}
                     <div className="dropdown__options-exercise" >
                         <p className="dropdown__options-exercise-name">{exercise}</p>
                         <MdPending className="dropdown__options-exercise-icon" onClick={handleOptionsPopup} />
@@ -58,13 +54,10 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
                                 <MdModeEdit className="options-popup__item-icon" />
                                 <p className="options-popup__item-name">Edit</p>
                             </li>
-                            <li className="options-popup__item" onClick={handleDelete} value={index}>
+                            <li className="options-popup__item" onClick={() => handleDelete(index)}>
                                 <BsFillTrashFill className="options-popup__item-icon" /> 
                                 <p className="options-popup__item-name">Delete</p> 
                             </li>
-                            {/* <li className="options-popup__item">View</li>
-                            <li className="options-popup__item">Edit</li>
-                            <li className="options-popup__item" onClick={handleDelete} value={index}>Delete</li> */}
                         </div>
                     )}
                 </div>
@@ -81,18 +74,28 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
         let updatedArrayWorkouts = [...arrayOfWorkouts];
         updatedArrayWorkouts.push(inputRef.current.value);
         let updatedList = [...listOfWorkouts];
+        const updatedIndex = updatedArrayWorkouts.length - 1;
         updatedList.push(
-            <div key={updatedArrayWorkouts.length - 1}>
+            <div key={updatedIndex}>
                 <p className="dropdown__options-exercise">
                     {inputRef.current.value} 
                     <MdPending className="dropdown__options-exercise-icon" onClick={handleOptionsPopup} />
                 </p>
                 {optionsPopup && (
                     <div className="options-popup">
-                        <li className="options-popup__item">View</li>
-                        <li className="options-popup__item">Edit</li>
-                        <li className="options-popup__item" onClick={handleDelete}>Delete</li>
-                    </div>
+                    <li className="options-popup__item">
+                        <BsFillEyeFill className="options-popup__item-icon" />
+                        <p className="options-popup__item-name">View</p>
+                    </li>
+                    <li className="options-popup__item">
+                        <MdModeEdit className="options-popup__item-icon" />
+                        <p className="options-popup__item-name">Edit</p>
+                    </li>
+                    <li className="options-popup__item" onClick={() => handleDelete(updatedIndex)}>
+                        <BsFillTrashFill className="options-popup__item-icon" /> 
+                        <p className="options-popup__item-name">Delete</p> 
+                    </li>
+                </div>
                 )}
             </div>
         );
@@ -103,13 +106,14 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
         handleAddDrop();
     }
 
-    const handleDelete = (e) => {
-        const deleteValue = arrayOfWorkouts[e.target.value]
+    const handleDelete = (index) => {
+        const deleteValue = arrayOfWorkouts[index];
         console.log("Deleted value: ", deleteValue);
-        const deletedArr = arrayOfWorkouts.filter(workout => workout !== deleteValue)
+        const deletedArr = arrayOfWorkouts.filter((workout, i) => i !== index);
         console.log("The deleted array ", deletedArr);
         setArrayOfWorkouts(deletedArr);
-    }
+    };
+    
 
     useEffect(() => {
         initialiseWorkouts();
@@ -138,9 +142,9 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
                         <div className="dropdown__options-list">
                             {listOfWorkouts}
                             {openAdd && (
-                                <form onSubmit={createExercise}>
+                                <form onSubmit={createExercise} className="dropdown__options-exercise-form">
                                     <input className="dropdown__options-exercise-icon" placeholder="Add new exercise" ref={inputRef} />
-                                    <button type="submit"> <MdDoneOutline /> </button>
+                                    <button className="dropdown__options-exercise-button" type="submit"> Add</button>
                                 </form>
                             )}
                         </div>
