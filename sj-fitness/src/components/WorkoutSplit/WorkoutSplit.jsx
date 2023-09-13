@@ -4,6 +4,7 @@ import { MdOutlineArrowDropDown, MdOutlineArrowDropUp, MdPending, MdDoneOutline 
 import { BsPlus, BsPlusLg } from "react-icons/bs";
 import { logDOM } from "@testing-library/react";
 
+
 const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
 
     const [openDrop, setOpenDrop] = useState(false);
@@ -29,6 +30,7 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
 
     const handleOptionsPopup = () => {
         console.log("Clicked");
+        // setOptionsPopup(true)
         setOptionsPopup((prevOpenDrop) => !prevOpenDrop);
     };
 
@@ -37,19 +39,19 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
         console.log("Inital workouts ", arrayOfWorkouts);
         arrayOfWorkouts.map((exercise, index) => {
             workoutData.push(
-                <>
+                <div key={index}>
                     <p className="dropdown__options-exercise" >
                         {exercise} 
                         <MdPending className="dropdown__options-exercise-icon" onClick={handleOptionsPopup} />
                     </p>
-                    {/* {optionsPopup && ( */}
+                    {optionsPopup && (
                         <div className="options-popup">
                             <li className="options-popup__item">View</li>
                             <li className="options-popup__item">Edit</li>
                             <li className="options-popup__item" onClick={handleDelete} value={index}>Delete</li>
                         </div>
-                    {/* )} */}
-                </>
+                    )}
+                </div>
             )
         })
         setListOfWorkouts(workoutData)
@@ -64,23 +66,25 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
         updatedArrayWorkouts.push(inputRef.current.value);
         let updatedList = [...listOfWorkouts];
         updatedList.push(
-            <>
+            <div key={updatedArrayWorkouts.length - 1}>
                 <p className="dropdown__options-exercise">
                     {inputRef.current.value} 
                     <MdPending className="dropdown__options-exercise-icon" onClick={handleOptionsPopup} />
                 </p>
-                {/* {optionsPopup && ( */}
+                {optionsPopup && (
                     <div className="options-popup">
                         <li className="options-popup__item">View</li>
                         <li className="options-popup__item">Edit</li>
                         <li className="options-popup__item" onClick={handleDelete}>Delete</li>
                     </div>
-                {/* )} */}
-            </>
+                )}
+            </div>
         );
         setListOfWorkouts(updatedList)
         setArrayOfWorkouts(updatedArrayWorkouts)
         console.log("After array ", arrayOfWorkouts);
+        inputRef.current.value = ""; // Clear the input field
+        handleAddDrop();
     }
 
     const handleDelete = (e) => {
@@ -132,6 +136,5 @@ const WorkoutSplit = ({ opendropdown, splitName, workouts }) => {
 };
 
 export default WorkoutSplit;
-
 
 {/* <WorkoutSplit splitName={"Pull"} workouts={["Pull up", "Bicep curl"]}/> */}
